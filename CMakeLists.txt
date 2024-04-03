@@ -4,13 +4,14 @@ project(cw_2)
 
 add_executable(
     cw
-    src/main.cpp
-    src/check_args_amount.cpp
     src/consts.h
-    src/validate_args.cpp
+    src/main.cpp
     src/print_functions.cpp
-    src/color_replace.cpp
-    src/getFileInfo.cpp
-    src/imageStructs.h
-    src/new_file.cpp
+    src/input_functions/check_args_amount.cpp
+    src/input_functions/validate_args.cpp
+    src/images_functions/imageStructs.h
+    src/images_functions/color_replace.cpp
+    src/images_functions/getFileInfo.cpp
+    src/images_functions/new_file.cpp
+    src/images_functions/parsing_functions.cpp
 )

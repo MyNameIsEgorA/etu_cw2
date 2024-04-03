@@ -1,14 +1,14 @@
 #include <unordered_map>
 #include <string>
 
-#include "check_args_amount.h"
+#include "input_functions/check_args_amount.h"
 #include "consts.h"
-#include "validate_args.h"
+#include "input_functions/validate_args.h"
 #include "print_functions.h"
-#include "getFileInfo.h"
-#include "color_replace.h"
-#include "imageStructs.h"
-#include "new_file.h"
+#include "images_functions/getFileInfo.h"
+#include "images_functions/color_replace.h"
+#include "images_functions/imageStructs.h"
+#include "images_functions/new_file.h"
 
 int main(int argc, char** argv) {
     std::unordered_map<std::string, std::string> argsMap = getParams(argc, argv);
@@ -39,9 +39,7 @@ int main(int argc, char** argv) {
 
     try {
         bitArr = readBMP(argsMap[INPUT], header, infoHeader);
-    }
-    catch(const std::runtime_error& e)
-    {
+    } catch(const std::runtime_error& e) {
         std::cerr << e.what();
     }
 

@@ -5,7 +5,7 @@
 #include <vector>
 #include <algorithm>
 
-#include "consts.h"
+#include "../consts.h"
 
 std::unordered_map<std::string, std::string> getParams(int argc, char** argv);
 std::string findFlag(std::string firstFlag, std::unordered_map<std::string, std::string> flags);

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <regex>
 
-#include "consts.h"
+#include "../consts.h"
 
 bool isValidCoords(const std::string& str);
 bool isValidColor(const std::string& str);

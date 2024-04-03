@@ -25,7 +25,7 @@ struct option long_options[] = {
 std::unordered_map<std::string, std::string> getParams(int argc, char** argv) {
     int opt;
     std::string option_name;
-    std::unordered_map<std::string, std::string> options;
+    std::unordered_map<std::string, std::string> argsMap;
 
     int option_index = 0;
     bool exit_check = 0;
@@ -41,9 +41,9 @@ std::unordered_map<std::string, std::string> getParams(int argc, char** argv) {
 
         option_name = long_options[option_index].name;
         if (optarg) {
-            options.insert(std::make_pair(option_name, optarg));
+            argsMap.insert(std::make_pair(option_name, optarg));
         } else {
-            options.insert(std::make_pair(option_name, ""));
+            argsMap.insert(std::make_pair(option_name, ""));
         }
     }
 
@@ -52,13 +52,13 @@ std::unordered_map<std::string, std::string> getParams(int argc, char** argv) {
         std::cout << USE_HELP;
         exit(0);
     }
-    return options;
+    return argsMap;
 }
 
-void removeKeysFromVector(std::unordered_map<std::string, std::string>& map, std::vector<std::string>& keys) {
+void removeKeysFromVector(std::unordered_map<std::string, std::string>& argsMap, std::vector<std::string>& keys) {
     keys.erase(std::remove_if(keys.begin(), keys.end(),
-        [&map](const std::string& key) {
-            return map.find(key) != map.end();
+        [&argsMap](const std::string& key) {
+            return argsMap.find(key) != argsMap.end();
         }), keys.end());
 }
 
@@ -101,9 +101,9 @@ std::string findFlag(std::string firstFlag, std::unordered_map<std::string, std:
     return INCORRECT;
 }
 
-std::vector<std::string> getExtraKeys(const std::unordered_map<std::string, std::string>& map, const std::vector<std::string>& keys) {
+std::vector<std::string> getExtraKeys(const std::unordered_map<std::string, std::string>& argsMap, const std::vector<std::string>& keys) {
     std::vector<std::string> extraKeys;
-    for (const auto& kv : map) {
+    for (const auto& kv : argsMap) {
         if (std::find(keys.begin(), keys.end(), kv.first) == keys.end()) {
             extraKeys.push_back(kv.first);
         }
@@ -111,17 +111,17 @@ std::vector<std::string> getExtraKeys(const std::unordered_map<std::string, std:
     return extraKeys;
 }
 
-bool isCorrect(std::vector<std::string>& flagsArr, std::unordered_map<std::string, std::string> flags) {
+bool isCorrect(std::vector<std::string>& flagsArr, std::unordered_map<std::string, std::string> argsMap) {
 
     bool isCorrect = true;
 
-    std::vector<std::string> extraKeys = getExtraKeys(flags, flagsArr);
+    std::vector<std::string> extraKeys = getExtraKeys(argsMap, flagsArr);
 
     if (extraKeys.size()) {
         isCorrect = false;
     }
 
-    removeKeysFromVector(flags, flagsArr);
+    removeKeysFromVector(argsMap, flagsArr);
     if (flagsArr.size()) {
         isCorrect = false;
         for (const auto& item: extraKeys) {
