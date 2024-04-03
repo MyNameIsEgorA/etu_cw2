@@ -22,3 +22,12 @@ Available flags:\n\n\
     --thickness - takes integer number. Used to set thickness of split lines\n\
     --color - takes rrr.ggg.bbb color to set split line color)\n";
 }
+
+void printFileInfo(BMPInfoHeader infoHeader) {
+    std::cout << "Информация о файле\n";
+    std::cout << "Количество цветов на пиксель: " <<  infoHeader.colorDepth;
+    std::cout << "\nРазмер заголовка: " << infoHeader.headerSize;
+    std::cout << "\nШирина файла: " <<  infoHeader.width;
+    std::cout << "\nВысота файла: " << infoHeader.height;
+    std::cout << std::endl;
+}

@@ -11,7 +11,7 @@ struct option long_options[] = {
         {"right_down", required_argument, 0, 'r'},
         {"copy", no_argument, 0, 0},
         {"dest_left_up", required_argument, 0, 0},
-        {"color_replace", required_argument, 0, 0},
+        {"color_replace", no_argument, 0, 0},
         {"old_color", required_argument, 0, 0},
         {"new_color", required_argument, 0, 0},
         {"split", no_argument, 0, 0},
@@ -68,12 +68,15 @@ std::string findFlag(std::string firstFlag, std::unordered_map<std::string, std:
     std::vector<std::string> copyFlags    = {"copy", "left_up", "right_down", "dest_left_up", "input", "output"};
     std::vector<std::string> replaceFlags = {"color_replace", "old_color", "new_color", "input", "output"};
     std::vector<std::string> splitFlags   = {"split", "number_x", "number_y", "thickness", "color", "input", "output"};
+    std::vector<std::string> infoFlags    = {"info", "input"};
 
     if (firstFlag == "-help" or firstFlag == "-h") {
         return HELP;
     }
-    if (firstFlag == "-info" or firstFlag == "-i") {
-        return INFO;
+    if (firstFlag == "--info" or firstFlag == "-i") {
+        if (isCorrect(infoFlags, flags)) {
+            return INFO;
+        }
     }
     if (firstFlag == "--mirror") {
         if (isCorrect(mirrorFlags, flags)) {

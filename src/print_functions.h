@@ -1,4 +1,6 @@
-#include <iostream> 
+#include <iostream>
+#include "imageStructs.h" 
+#include <vector>
 
 void printHelp();
-void printInfo();
+void printFileInfo(BMPInfoHeader infoHeader);

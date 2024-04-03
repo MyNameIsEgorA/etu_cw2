@@ -21,3 +21,5 @@
 #define NUMBER_Y         "number_y"
 #define THICKNESS        "thickness"
 #define COLOR            "color"
+#define INPUT            "input"
+#define OUTPUT           "output"

@@ -9,5 +9,8 @@ add_executable(
     src/consts.h
     src/validate_args.cpp
     src/print_functions.cpp
-    src/changeColor.cpp
+    src/color_replace.cpp
+    src/getFileInfo.cpp
+    src/imageStructs.h
+    src/new_file.cpp
 )

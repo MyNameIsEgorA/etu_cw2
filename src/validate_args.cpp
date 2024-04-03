@@ -1,7 +1,10 @@
 #include "validate_args.h"
 
-
 bool validateArgs(std::string functionName, std::unordered_map<std::string, std::string> argsMap) {
+
+    if (functionName == INFO) {
+        return true;
+    }
     if (functionName == MIRROR) {
         return mirrorValidation(argsMap);
     }
