@@ -10,6 +10,8 @@
 #include "images_functions/imageStructs.h"
 #include "images_functions/new_file.h"
 #include "images_functions/copy_part.h"
+#include "images_functions/mirror.h"
+#include "images_functions/split.h"
 
 int main(int argc, char** argv) {
     std::unordered_map<std::string, std::string> argsMap = getParams(argc, argv);
@@ -57,7 +59,13 @@ int main(int argc, char** argv) {
         copyPartOfImage(infoHeader, bitArr, argsMap);
     }
 
+    if (functionToCall == MIRROR) {
+        mirror(infoHeader, bitArr, argsMap);       
+    }
 
+    if (functionToCall == SPLIT) {
+        split(infoHeader, bitArr, argsMap);
+    }
 
     writeBMP(argsMap["output"], header, infoHeader, bitArr);
 
