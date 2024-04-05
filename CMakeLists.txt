@@ -13,5 +13,6 @@ add_executable(
     src/images_functions/color_replace.cpp
     src/images_functions/getFileInfo.cpp
     src/images_functions/new_file.cpp
+    src/images_functions/copy_part.cpp
     src/images_functions/parsing_functions.cpp
 )

@@ -9,6 +9,7 @@
 #include "images_functions/color_replace.h"
 #include "images_functions/imageStructs.h"
 #include "images_functions/new_file.h"
+#include "images_functions/copy_part.h"
 
 int main(int argc, char** argv) {
     std::unordered_map<std::string, std::string> argsMap = getParams(argc, argv);
@@ -51,6 +52,12 @@ int main(int argc, char** argv) {
     if (functionToCall == COLOR_REPLACE) {
         changeColors(infoHeader, bitArr, argsMap);
     }
+
+    if (functionToCall == COPY) {
+        copyPartOfImage(infoHeader, bitArr, argsMap);
+    }
+
+
 
     writeBMP(argsMap["output"], header, infoHeader, bitArr);
 
